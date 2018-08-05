@@ -1,0 +1,24 @@
+{
+  "name": "pointbot",
+  "version": "0.1.0",
+  "description": "A DiscordJS bot for awarding points to people",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "discordjs",
+    "bot",
+    "points"
+  ],
+  "author": "mjfox09",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "11.3.2"
+  },
+  "devDependencies": {
+    "tslint": "5.11.0",
+    "typescript": "3.0.1"
+  }
+}
