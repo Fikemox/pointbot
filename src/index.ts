@@ -16,7 +16,7 @@ client.on("ready", () => {
   console.log(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`);
   // Example of changing the bot's playing game to something useful. `client.user` is what the
   // docs refer to as the "ClientUser".
-  client.user.setActivity(`Your mum`);
+  client.user.setActivity(`!help for a list of commands`);
 });
 
 client.on("message", async message => {
@@ -40,13 +40,17 @@ client.on("message", async message => {
 
   // Let's go with a few common example commands! Feel free to delete or change those.
 
-  if(command === "ping") {
-    // Calculates ping between sending a message and editing it, giving a nice round-trip latency.
-    // The second ping is an average latency between the bot and the websocket server (one-way, not round-trip)
-    const m = await message.channel.send("Ping?");
-    // @ts-ignore
-    m.edit(`Pong! Latency is ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(client.ping)}ms`);
-  }
+    if(command === "help") {
+        message.channel.send("I cannot help you because Mike sucks.");
+    }
+
+    if(command === "ping") {
+        // Calculates ping between sending a message and editing it, giving a nice round-trip latency.
+        // The second ping is an average latency between the bot and the websocket server (one-way, not round-trip)
+        const m = await message.channel.send("Ping?");
+        // @ts-ignore
+        m.edit(`Pong! Latency is ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(client.ping)}ms`);
+    }
 
   if(command === "say") {
     // makes the bot say something and delete the message. As an example, it's open to anyone to use.
@@ -59,7 +63,7 @@ client.on("message", async message => {
   }
 
   if(command === "++") {
-    // Let's first check if we have a member and if we can kick them!
+    message.delete().catch(O_o=>{console.log(O_o);});
     // message.mentions.members is a collection of people that have been mentioned, as GuildMembers.
     let member = message.mentions.members.first();
     if(!member)
@@ -75,7 +79,7 @@ client.on("message", async message => {
   }
 
   if(command === "--") {
-    // Let's first check if we have a member and if we can kick them!
+    message.delete().catch(O_o=>{console.log(O_o);});
     // message.mentions.members is a collection of people that have been mentioned, as GuildMembers.
     let member = message.mentions.members.first();
     if(!member)
