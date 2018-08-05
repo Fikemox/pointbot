@@ -1,6 +1,8 @@
 import { Client, Message } from 'discord.js';
-import { pointChange } from './pointChange';
 import { help } from './help';
+import { list } from './list';
+import { me } from './me';
+import { pointChange } from './pointChange';
 
 export enum Commands {
     help = "help",
@@ -13,12 +15,16 @@ export enum Commands {
 interface CommandFunctions {
     [key: string]: (client: Client, message: Message, args: string[], command: string) => void; // Required function signature
     help: typeof help;
+    list: typeof list;
+    me: typeof me;
     "++": typeof pointChange;
     "--": typeof pointChange;
 }
 
 export const CommandFunctions: CommandFunctions = {
     help: help,
+    list: list,
+    me: me,
     "++": pointChange,
     "--": pointChange
 };
