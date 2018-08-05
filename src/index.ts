@@ -32,7 +32,7 @@ client.on("message", async message => {
   // Check if we support this command
   if (Object.values(Commands).includes(command)) {
     // Run this command
-    CommandFunctions[command](client, message, args);
+    CommandFunctions[command](client, message, args, command);
   }
 });
 

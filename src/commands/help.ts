@@ -14,6 +14,8 @@ export function help(client: Client, message: Message, args: string[]) {
 	botresponse += 'Deducts a point from a user for a reason.\n';
 	botresponse += '**!me**\n';
 	botresponse += 'Returns all of your points.\n';
+	botresponse += '**!list**\n';
+	botresponse += 'List each users points.\n';
 
 	message.channel.send('DM Sent!');
 	message.author.send(botresponse);
