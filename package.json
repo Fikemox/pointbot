@@ -12,7 +12,7 @@
     "bot",
     "points"
   ],
-  "author": "mjfox09",
+  "author": "Fikemox",
   "license": "ISC",
   "dependencies": {
     "discord.js": "11.3.2"
