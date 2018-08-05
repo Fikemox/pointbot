@@ -12,13 +12,6 @@
     "no-var-keyword": true,
     "no-trailing-whitespace": true,
     "semicolon": true,
-    "trailing-comma": [
-      true,
-      {
-        "multiline": "always",
-        "singleline": "never"
-      }
-    ],
     "typedef": [
       true,
       "parameter",

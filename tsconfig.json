@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "es6",
-    "lib": ["es2015", "es5", "dom"],
+    "lib": ["es2015", "es5", "dom", "es2017"],
     "module": "commonjs",
     "declaration": true,
     "outDir": "./dist",
@@ -11,7 +11,6 @@
     "noImplicitThis": true,
     "strictNullChecks": true,
     "noUnusedLocals": true,
-    "noUnusedParameters": true,
     "noEmitOnError": true,
     "watch": false
   },
