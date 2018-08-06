@@ -1,11 +1,18 @@
 // Load up the discord.js library
 import * as Discord from "discord.js";
+import { Pool } from "pg";
 import { Commands, CommandFunctions } from "./commands/index";
 
 // In production these are loaded by the running service
 if (process.env.NODE_ENV !== "production") {
   require('dotenv').config();
 }
+
+// Connect to the database
+const dbPool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: true
+});
 
 // Initialize a new bot
 const client = new Discord.Client();

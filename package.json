@@ -17,10 +17,12 @@
   "author": "Fikemox",
   "license": "ISC",
   "dependencies": {
-    "discord.js": "11.3.2"
+    "discord.js": "11.3.2",
+    "pg": "7.4.3"
   },
   "devDependencies": {
     "@types/node": "10.5.6",
+    "@types/pg": "^7.4.10",
     "dotenv": "6.0.0",
     "tslint": "5.11.0",
     "typescript": "3.0.1"
