@@ -55,10 +55,10 @@ client.login(process.env.TOKEN);
 
 // Heroku keep alive
 import * as express from "express";
-express().listen(process.env.port, (err: string) => {
+express().listen(process.env.PORT, (err: string) => {
   if (err) {
     return console.log(err);
   }
 
-  return console.log(`express server is listening on ${process.env.port}`);
+  return console.log(`express server is listening on ${process.env.PORT}`);
 });
