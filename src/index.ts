@@ -2,11 +2,13 @@
 import * as Discord from "discord.js";
 import { Commands, CommandFunctions } from "./commands/index";
 
+// In production these are loaded by the running service
+if (process.env.NODE_ENV !== "production") {
+  require('dotenv').config();
+}
+
 // Initialize a new bot
 const client = new Discord.Client();
-
-// Here we load the config.json file that contains our token and our prefix values.
-const config = require("../config.json");
 
 client.on("ready", () => {
   // This event will run if the bot starts, and logs in, successfully.
@@ -22,10 +24,12 @@ client.on("message", async message => {
   }
 
   // Ignore messages that don't start with our prefix
-  if(message.content.indexOf(config.prefix) !== 0) return;
+  // @ts-ignore - this will be loaded in dev and production
+  if(message.content.indexOf(process.env.PREFIX) !== 0) return;
 
   // Here we separate our "command" name, and our "arguments" for the command.
-  const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
+  // @ts-ignore - this will be loaded in dev and production
+  const args = message.content.slice(process.env.PREFIX.length).trim().split(/ +/g);
   // @ts-ignore - args will always exist
   const command = args.shift().toLowerCase();
 
@@ -37,4 +41,4 @@ client.on("message", async message => {
 });
 
 // Connect and login to the server
-client.login(config.token);
+client.login(process.env.TOKEN);
