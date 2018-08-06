@@ -20,6 +20,9 @@ const client = new Discord.Client();
 client.on("ready", () => {
   // This event will run if the bot starts, and logs in, successfully.
   console.log(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`);
+  if (dbPool !== null) {
+    console.log("A database pool has been created");
+  }
   // Set the bot's playing status
   client.user.setActivity(`!help for a list of commands`);
 });
