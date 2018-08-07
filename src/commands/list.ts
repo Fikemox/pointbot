@@ -18,7 +18,7 @@ export async function list(dbClient: Client, message: Message, args: string[], c
             console.log(`@${listResult.rows[i].user_id} : ${listResult.rows[i].point_value}`);
             botresponse.addField(`@${listResult.rows[i].user_id} : ${listResult.rows[i].point_value}`, '');
         }
-        message.channel.send(botresponse);
+        message.channel.sendEmbed(botresponse);
     } catch (error) {
         console.log("An error occurred running the !list command: " + JSON.stringify(error));
     }
