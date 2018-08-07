@@ -4,7 +4,7 @@ import * as Discord from "discord.js";
 
 export async function list(dbClient: Client, message: Message, args: string[], command: string) {
     try {
-        const listResult = await dbClient.query(`SELECT point_value FROM UserPoints;`);
+        const listResult = await dbClient.query(`SELECT * FROM UserPoints;`);
         if (listResult.rowCount <= 0) {
             message.channel.send("This is where the list would go...**IF I HAD ONE!**", {files: ["https://memegenerator.net/img/images/2276176.jpg"]});
             return;
