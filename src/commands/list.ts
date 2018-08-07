@@ -2,7 +2,12 @@ import { Message } from "discord.js";
 import { Client } from "pg";
 import * as Discord from "discord.js";
 
-export async function list(dbClient: Client, message: Message, args: string[], command: string) {
+/**
+ * Sends the current list of points per user into the channel
+ * @param dbClient database client
+ * @param message message that triggered the command
+ */
+export async function list(dbClient: Client, message: Message) {
     try {
         // Grab the list data
         const listResult = await dbClient.query(`SELECT * FROM UserPoints ORDER BY point_value desc;`);

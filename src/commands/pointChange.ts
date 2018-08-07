@@ -25,7 +25,7 @@ export async function pointChange(dbClient: Client, message: Message, args: stri
             insertIntoTable = false;
         }
 
-        // Add the point
+        // Change the current points based on the command and alert the user
         if (command === Commands.addPoint) {
             message.channel.send(`${member.user.toString()} has been awarded a point because: ${reason}`);
             currentPoints++;
