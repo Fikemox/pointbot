@@ -14,9 +14,10 @@ export async function list(dbClient: Client, message: Message, args: string[], c
 			  .setTitle("Leaderboard")
 			  .setDescription("All the points!")
 			  .setColor(0x00AE86);
-			for(let i = 0; i < listResult.rowCount; i++) {
-                botresponse.addField(`@${listResult.rows[i].user_id} : ${listResult.rows[i].point_value}`, '');
-            }
+        for(let i = 0; i < listResult.rowCount; i++) {
+            console.log(`@${listResult.rows[i].user_id} : ${listResult.rows[i].point_value}`);
+            botresponse.addField(`@${listResult.rows[i].user_id} : ${listResult.rows[i].point_value}`, '');
+        }
         message.channel.send(botresponse);
     } catch (error) {
         console.log("An error occurred running the !list command: " + JSON.stringify(error));
