@@ -8,7 +8,7 @@ if (process.env.NODE_ENV !== "production") {
   require('dotenv').config();
 }
 
-// Connect to the database
+// Initialize a database client
 const dbClient = new Client({
   connectionString: process.env.DATABASE_URL,
   ssl: true
@@ -20,10 +20,10 @@ const client = new Discord.Client();
 client.on("ready", () => {
   // This event will run if the bot starts, and logs in, successfully.
   console.log(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`);
-  if (dbClient !== null) {
-    console.log("A database pool has been created");
-    dbClient.connect();
-  }
+
+  // Connect to the database
+  dbClient.connect();
+
   // Set the bot's playing status
   client.user.setActivity(`!help for a list of commands`);
 });
