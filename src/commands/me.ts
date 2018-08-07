@@ -1,6 +1,7 @@
-import { Client, Message } from "discord.js";
+import { Message } from "discord.js";
+import { Client } from "pg";
 
-export function me(client: Client, message: Message, args: string[], command: string) {
+export function me(dbClient: Client, message: Message, args: string[], command: string) {
     // Delete the message from the channel
     message.delete().catch(O_o=>{console.log(O_o);});
     //Todo: Fill in with real list

@@ -1,7 +1,8 @@
-import { Client, Message } from "discord.js";
+import { Message } from "discord.js";
 import { Commands } from "./index";
+import { Client } from "pg";
 
-export function pointChange(client: Client, message: Message, args: string[], command: string) {
+export function pointChange(dbClient: Client, message: Message, args: string[], command: string) {
     // Delete the message from the channel
     message.delete().catch(O_o=>{console.log(O_o);});
 

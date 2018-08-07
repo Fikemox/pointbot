@@ -1,6 +1,6 @@
 // Load up the discord.js library
 import * as Discord from "discord.js";
-import { Pool } from "pg";
+import { Client } from "pg";
 import { Commands, CommandFunctions } from "./commands/index";
 
 // In production these are loaded by the running service
@@ -9,7 +9,7 @@ if (process.env.NODE_ENV !== "production") {
 }
 
 // Connect to the database
-const dbPool = new Pool({
+const dbClient = new Client({
   connectionString: process.env.DATABASE_URL,
   ssl: true
 });
@@ -20,7 +20,7 @@ const client = new Discord.Client();
 client.on("ready", () => {
   // This event will run if the bot starts, and logs in, successfully.
   console.log(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`);
-  if (dbPool !== null) {
+  if (dbClient !== null) {
     console.log("A database pool has been created");
   }
   // Set the bot's playing status
@@ -46,7 +46,7 @@ client.on("message", async message => {
   // Check if we support this command
   if (Object.values(Commands).includes(command)) {
     // Run this command
-    CommandFunctions[command](client, message, args, command);
+    CommandFunctions[command](dbClient, message, args, command);
   }
 });
 

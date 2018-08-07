@@ -1,12 +1,13 @@
-import { Client, Message } from "discord.js";
+import { Message } from "discord.js";
+import { Client } from "pg";
 
 /**
  * Sends a helpful list of commands to the requestor
- * @param client Currently active discord client
+ * @param dbClient Currently active db client
  * @param message Currently processed message
  * @param args Any additional arguments that might have been passed
  */
-export function help(client: Client, message: Message, args: string[]) {
+export function help(dbClient: Client, message: Message, args: string[]) {
     let botresponse = '';
 	botresponse += '**!++ @Username Reason**\n';
 	botresponse += 'Gives a point to a user for a reason\n';

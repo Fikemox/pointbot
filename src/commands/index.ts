@@ -1,4 +1,5 @@
-import { Client, Message } from 'discord.js';
+import { Message } from 'discord.js';
+import { Client } from "pg";
 import { help } from './help';
 import { list } from './list';
 import { me } from './me';
@@ -13,7 +14,7 @@ export enum Commands {
 }
 
 interface CommandFunctions {
-    [key: string]: (client: Client, message: Message, args: string[], command: string) => void; // Required function signature
+    [key: string]: (dbClient: Client, message: Message, args: string[], command: string) => void; // Required function signature
     help: typeof help;
     list: typeof list;
     me: typeof me;
