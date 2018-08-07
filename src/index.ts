@@ -22,6 +22,7 @@ client.on("ready", () => {
   console.log(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`);
   if (dbClient !== null) {
     console.log("A database pool has been created");
+    dbClient.connect();
   }
   // Set the bot's playing status
   client.user.setActivity(`!help for a list of commands`);
