@@ -40,7 +40,7 @@ export async function pointChange(dbClient: Client, message: Message, args: stri
 
         // Update the member's current point value
         if (insertIntoTable) {
-            await dbClient.query(`INSERT INTO UserPoints(user_id, point_value) VALUES (${member.id}, ${currentPoints};`);
+            await dbClient.query(`INSERT INTO UserPoints(user_id, point_value) VALUES (${member.id}, ${currentPoints});`);
         } else {
             await dbClient.query(`UPDATE UserPoints SET point_value = ${currentPoints} WHERE user_id = ${member.id};`);
         }
