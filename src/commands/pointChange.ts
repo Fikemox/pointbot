@@ -6,7 +6,7 @@ export async function pointChange(dbClient: Client, message: Message, args: stri
     // Get the first member mentioned
     const member = message.mentions.members.first();
     if(!member) {
-        return message.reply(`Hey ${message.author.tag}! That user doesn't exist.`);
+        return message.reply(`Hey ${message.author.toString()}! That user doesn't exist.`);
     }
 
     // Get the reason passed in or define a default
