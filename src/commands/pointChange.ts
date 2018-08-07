@@ -3,17 +3,13 @@ import { Commands } from "./index";
 import { Client } from "pg";
 
 export async function pointChange(dbClient: Client, message: Message, args: string[], command: string) {
-    // Delete the message from the channel
-    message.delete().catch(O_o=>{console.log(O_o);});
-
-    // message.mentions.members is a collection of people that have been mentioned, as GuildMembers.
+    // Get the first member mentioned
     let member = message.mentions.members.first();
     if(!member) {
         return message.reply(`Hey ${message.author.tag}! That user doesn't exist.`);
     }
 
-    // slice(1) removes the first part, which here should be the user mention or ID
-    // join(' ') takes all the various parts to make it a single string.
+    // Get the reason passed in or define a default
     let reason = args.slice(1).join(' ');
     if(!reason) {
         reason = "Reasons!";

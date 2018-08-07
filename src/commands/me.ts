@@ -2,8 +2,6 @@ import { Message } from "discord.js";
 import { Client } from "pg";
 
 export async function me(dbClient: Client, message: Message, args: string[], command: string) {
-    // Delete the message from the channel
-    message.delete().catch(O_o=>{console.log(O_o);});
     let member = message.author;
     try {
         let pointResult = await dbClient.query(`SELECT point_value FROM UserPoints WHERE user_id = ${member.id};`);
