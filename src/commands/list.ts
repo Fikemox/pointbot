@@ -14,7 +14,7 @@ export async function list(dbClient: Client, message: Message, args: string[], c
 			  .setTitle("Leaderboard")
 			  .setDescription("All the points!")
 			  .setColor(0x00AE86);
-        for(let i = 0; i < listResult.rowCount + 1; i++) {
+        for(let i = 0; i < listResult.rowCount; i++) {
             botresponse.addField(`@${listResult.rows[i].user_id} :`,` ${listResult.rows[i].point_value}`);
         }
         message.channel.sendEmbed(botresponse);
