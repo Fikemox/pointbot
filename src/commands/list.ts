@@ -9,7 +9,7 @@ export async function list(dbClient: Client, message: Message, args: string[], c
             message.channel.send("This is where the list would go...**IF I HAD ONE!**", {files: ["https://memegenerator.net/img/images/2276176.jpg"]});
             return;
         }
-        const botresponse = new Discord.RichEmbed()
+        let botresponse = new Discord.RichEmbed()
 			  .setTitle("Leaderboard")
 			  .setDescription("All the points!")
 			  .setColor(0x00AE86);
@@ -18,7 +18,7 @@ export async function list(dbClient: Client, message: Message, args: string[], c
         }
         message.channel.sendEmbed(botresponse);
     } catch (error) {
-        console.log("An error occurred running the !list command: " + JSON.stringify(error));
+        console.log("An error occurred running the !list command: " + error.message);
     }
     //Todo: Fill in with real list
 }
