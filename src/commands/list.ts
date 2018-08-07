@@ -17,7 +17,7 @@ export async function list(dbClient: Client, message: Message, args: string[], c
         for(let i = 0; i < listResult.rowCount; i++) {
             const member = message.guild.members.get(listResult.rows[i].user_id);
             // @ts-ignore
-            botresponse.addField(`@${member.user.username} :`,` ${listResult.rows[i].point_value}`);
+            botresponse.addField(`${member.user.username} :`,` ${listResult.rows[i].point_value}`);
         }
         message.channel.send(botresponse);
     } catch (error) {
