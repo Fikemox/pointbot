@@ -15,9 +15,11 @@ export async function list(dbClient: Client, message: Message, args: string[], c
 			  .setDescription("All the points!")
 			  .setColor(0x00AE86);
         for(let i = 0; i < listResult.rowCount; i++) {
-            botresponse.addField(`@${listResult.rows[i].user_id} :`,` ${listResult.rows[i].point_value}`);
+            const member = message.guild.members.get(listResult.rows[i].user_id);
+            // @ts-ignore
+            botresponse.addField(`@${member.user.username} :`,` ${listResult.rows[i].point_value}`);
         }
-        message.channel.sendEmbed(botresponse);
+        message.channel.send(botresponse);
     } catch (error) {
         console.log("An error occurred running the !list command: " + error.message);
     }
