@@ -9,14 +9,12 @@ export async function list(dbClient: Client, message: Message, args: string[], c
             message.channel.send("This is where the list would go...**IF I HAD ONE!**", {files: ["https://memegenerator.net/img/images/2276176.jpg"]});
             return;
         }
-        console.log(listResult.rows);
         const botresponse = new Discord.RichEmbed()
 			  .setTitle("Leaderboard")
 			  .setDescription("All the points!")
 			  .setColor(0x00AE86);
         for(let i = 0; i < listResult.rowCount + 1; i++) {
-            console.log(`@${listResult.rows[i].user_id} : ${listResult.rows[i].point_value}`);
-            botresponse.addField(`@${listResult.rows[i].user_id} : ${listResult.rows[i].point_value}`, '');
+            botresponse.addField(`@${listResult.rows[i].user_id} :`,` ${listResult.rows[i].point_value}`);
         }
         message.channel.sendEmbed(botresponse);
     } catch (error) {
