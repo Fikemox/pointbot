@@ -27,10 +27,10 @@ export async function pointChange(dbClient: Client, message: Message, args: stri
 
         // Add the point
         if (command === Commands.addPoint) {
-            message.channel.send(`@${member.user.id} has been awarded a point because: ${reason}`);
+            message.channel.send(`@${member.user.toString()} has been awarded a point because: ${reason}`);
             currentPoints++;
         } else if (command === Commands.subPoint) {
-            message.channel.send(`@${member.user.id} has been deducted a point because: ${reason}`);
+            message.channel.send(`@${member.user.toString()} has been deducted a point because: ${reason}`);
             currentPoints--;
         }
 
