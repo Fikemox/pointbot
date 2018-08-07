@@ -11,7 +11,7 @@ export async function me(dbClient: Client, message: Message, args: string[], com
         if (pointResult.rowCount > 0) {
             currentPoints = pointResult.rows[0].point_value;
         }
-        message.reply(`Your life is currently worth: ${currentPoints}\n <Insert witty ePeen joke here>`);
+        message.reply(`your current PointBot™ points are: ${currentPoints}`);
     } catch (error) {
         console.log("An error occured running a !me command: " + JSON.stringify(error));
     }
