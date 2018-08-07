@@ -9,6 +9,7 @@ export async function list(dbClient: Client, message: Message, args: string[], c
             message.channel.send("This is where the list would go...**IF I HAD ONE!**", {files: ["https://memegenerator.net/img/images/2276176.jpg"]});
             return;
         }
+        console.log(listResult.rows);
         let botresponse = new Discord.RichEmbed()
 			  .setTitle("Leaderboard")
 			  .setDescription("All the points!")
