@@ -4,7 +4,7 @@ import { Client } from "pg";
 
 export async function pointChange(dbClient: Client, message: Message, args: string[], command: string) {
     // Get the first member mentioned
-    let member = message.mentions.members.first();
+    const member = message.mentions.members.first();
     if(!member) {
         return message.reply(`Hey ${message.author.tag}! That user doesn't exist.`);
     }
@@ -17,7 +17,7 @@ export async function pointChange(dbClient: Client, message: Message, args: stri
 
     try {
         // Get the member's current point value so we can modify it
-        let pointResult = await dbClient.query(`SELECT point_value FROM UserPoints WHERE user_id = ${member.id};`);
+        const pointResult = await dbClient.query(`SELECT point_value FROM UserPoints WHERE user_id = ${member.id};`);
         let currentPoints = 0,
             insertIntoTable = true;
         if (pointResult.rowCount > 0) {
