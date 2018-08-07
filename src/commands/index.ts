@@ -5,6 +5,7 @@ import { list } from './list';
 import { me } from './me';
 import { pointChange } from './pointChange';
 
+// All the commands currently supported
 export enum Commands {
     help = "help",
     list = "list",
@@ -22,6 +23,7 @@ interface CommandFunctions {
     "--": typeof pointChange;
 }
 
+// All the command functions currently executed for the commands we support
 export const CommandFunctions: CommandFunctions = {
     help: help,
     list: list,
