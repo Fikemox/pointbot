@@ -12,6 +12,8 @@ export async function flip(dbClient: Client, message: Message) {
     const member = message.mentions.members.first();
     if(!member) {
         return message.reply(`Hey ${message.author.toString()}! That user doesn't exist.`);
+    }else if (member.id === message.author.id) {
+        return message.reply(`If you want to flip yourself just look in a mirror.`);
     }
 
     try {
