@@ -17,7 +17,7 @@ export async function me(dbClient: Client, message: Message) {
             currentPoints = pointResult.rows[0].point_value;
         }
         // Alert the user to their points
-        message.channel.send(`Your current PointBot™ points are: ${currentPoints}`);
+        message.channel.send(`Your current PointBot™ points are: ${currentPoints}\nDon't spend them all in one place!`);
     } catch (error) {
         console.log("An error occured running a !me command: " + JSON.stringify(error));
     }
