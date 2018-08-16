@@ -4,6 +4,7 @@ import { help } from './help';
 import { list } from './list';
 import { me } from './me';
 import { pointChange } from './pointChange';
+import { flip } from "./flip";
 
 // All the commands currently supported
 export enum Commands {
@@ -12,6 +13,7 @@ export enum Commands {
     me = "me",
     addPoint = "++",
     subPoint = "--",
+    flip = "flip"
 }
 
 interface CommandFunctions {
@@ -21,6 +23,7 @@ interface CommandFunctions {
     me: typeof me;
     "++": typeof pointChange;
     "--": typeof pointChange;
+    flip: typeof flip;
 }
 
 // All the command functions currently executed for the commands we support
@@ -29,5 +32,6 @@ export const CommandFunctions: CommandFunctions = {
     list: list,
     me: me,
     "++": pointChange,
-    "--": pointChange
+    "--": pointChange,
+    flip: flip
 };
