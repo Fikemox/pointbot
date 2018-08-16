@@ -7,6 +7,8 @@ export async function pointChange(dbClient: Client, message: Message, args: stri
     const member = message.mentions.members.first();
     if(!member) {
         return message.reply(`Hey ${message.author.toString()}! That user doesn't exist.`);
+    } else if (member.id === message.author.id) {
+        return message.reply(`Trying to manufacture points huh? Get outta my swamp!`);
     }
 
     // Get the reason passed in or define a default
