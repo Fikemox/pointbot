@@ -17,6 +17,8 @@ export function help(dbClient: Client, message: Message, args: string[]) {
 	botresponse += 'Returns all of your points.\n';
 	botresponse += '**!list**\n';
 	botresponse += 'List each users points.\n';
+	botresponse += '**!flip @Username**\n';
+	botresponse += 'Flip another users points. Costs 10 points.\n';
 
 	message.channel.send('DM Sent!');
 	message.author.send(botresponse);
