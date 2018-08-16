@@ -23,14 +23,15 @@ export async function flip(dbClient: Client, message: Message) {
             // Get the member's current point value so we can modify it
             const pointResult = await dbClient.query(`SELECT point_value FROM UserPoints WHERE user_id = ${member.id};`);
             // Make sure they have some points to flip
-            if (pointResult.rowCount > 0) {
+            if (pointResult.rowCount > 0 && pointResult.rows[0].point_value !== 0) {
                 // flip the member's current point value
                 await dbClient.query(`UPDATE UserPoints SET point_value = ${pointResult.rows[0].point_value * -1} WHERE user_id = ${member.id};`);
                 // deduct 10 points from the author
                 await dbClient.query(`UPDATE UserPoints SET point_value = ${requestingPointResult.rows[0].point_value - 10} WHERE user_id = ${message.author.id};`);
                 message.channel.send(`${member.user.toString()} has had their point value flipped! New value: ${pointResult.rows[0].point_value * -1}`);
             } else {
-                return message.reply(`How do you flip a zero, genius?`);
+                message.reply(`How do you flip a zero, genius? You know what...minus 5 points.`);
+                return await dbClient.query(`UPDATE UserPoints SET point_value = ${requestingPointResult.rows[0].point_value - 5} WHERE user_id = ${message.author.id};`);
             }
         } else {
             return message.reply(`Get outta here! Ya broke!`);
